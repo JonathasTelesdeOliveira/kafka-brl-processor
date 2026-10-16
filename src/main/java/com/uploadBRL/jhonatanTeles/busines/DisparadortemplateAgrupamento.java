@@ -21,7 +21,7 @@ public class DisparadortemplateAgrupamento {
     @Transactional
     public void updateTransaction(List<TransacaoKafkaDTO> tList) {
 
-        log.info("========== ENVIANDO PARA KAFKA ==========");
+        log.info("========== ENVIANDO PARA KAFKA AGRUPAMENTO==========");
         log.info("Quantidade de transações no lote: {}", tList.size());
 
         kafkaTemplate.send("transacoes-processadas", tList);

@@ -1,8 +1,7 @@
 package com.uploadBRL.jhonatanTeles.convert;
 
 import com.uploadBRL.jhonatanTeles.dto.out.TransacaoKafkaDTO;
-import com.uploadBRL.jhonatanTeles.enums.Lado;
-import com.uploadBRL.jhonatanTeles.exeptions.ConflictExeption;
+import com.uploadBRL.jhonatanTeles.exeptions.ConflictException;
 import com.uploadBRL.jhonatanTeles.infraestructure.TransactionEntity;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +19,7 @@ public class KafkaConvert {
 
     public List<TransactionEntity> transacaoKafkaDTOList_P_TransactionEntityList(List<TransacaoKafkaDTO> dtoList){
         if (dtoList == null || dtoList.isEmpty()) {
-            throw new ConflictExeption("Impossivel realizar conversão da lista: List<TransactionEntity> entityeslist");
+            throw new ConflictException("Impossivel realizar conversão da lista: List<TransactionEntity> entityeslist");
         }
         return dtoList.stream()
                 .map(this::transacaoKafkaDTO_P_transactionEntity)
@@ -65,7 +64,7 @@ public class KafkaConvert {
 
     public List<TransacaoKafkaDTO> transactionEntityList_P_TransacaoKafkaDTOList(List<TransactionEntity> entityeslist){
         if (entityeslist == null || entityeslist.isEmpty()) {
-            throw new ConflictExeption("Impossivel realizar conversão da lista: List<TransactionEntity> entityeslist");
+            throw new ConflictException("Impossivel realizar conversão da lista: List<TransactionEntity> entityeslist");
         }
         return entityeslist.stream()
                 .map(this::transactionEntityPara_transacaoKafkaDTO)

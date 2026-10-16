@@ -2,7 +2,7 @@ package com.uploadBRL.jhonatanTeles.busines;
 
 import com.uploadBRL.jhonatanTeles.convert.KafkaConvert;
 import com.uploadBRL.jhonatanTeles.dto.out.TransacaoKafkaDTO;
-import com.uploadBRL.jhonatanTeles.exeptions.ConflictExeption;
+import com.uploadBRL.jhonatanTeles.exeptions.ConflictException;
 import com.uploadBRL.jhonatanTeles.infraestructure.TransactionEntity;
 import com.uploadBRL.jhonatanTeles.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +21,7 @@ public class GtwaryService {
     public List<TransacaoKafkaDTO> listartransasoes(){
         List<TransactionEntity> transactionEntityList = tRepository.findAll();
         if(transactionEntityList.isEmpty()){
-            throw new ConflictExeption("Nenhuma transações encontrada.");
+            throw new ConflictException("Nenhuma transações encontrada.");
         }
         return convert.transactionEntityList_P_TransacaoKafkaDTOList(transactionEntityList);
     }

@@ -1,5 +1,6 @@
 package com.uploadBRL.jhonatanTeles.dto.out;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.uploadBRL.jhonatanTeles.enums.Lado;
 import lombok.*;
@@ -16,6 +17,7 @@ public class TransacaoKafkaDTO {
     @JsonProperty("id")
     private Long id;
     @JsonProperty("dataSped")
+    @JsonAlias({"data_sped", "dataCompra", "data"})
     private LocalDateTime dataSped;
     @JsonProperty("tradeId")
     private Integer tradeId;

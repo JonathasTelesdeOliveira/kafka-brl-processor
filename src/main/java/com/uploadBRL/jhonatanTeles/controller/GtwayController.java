@@ -23,11 +23,12 @@ public class GtwayController {
         this.service = service;
     }
 
-    @GetMapping("/ExtratoTransações")
-    @Operation(summary = "buscar", description = "buscar Lista de códogo de Cripto")
-    @ApiResponse(responseCode = "200", description = "busca com sucesso!")
-    @ApiResponse(responseCode = "400", description = "erro de requisisão.")
-    @ApiResponse(responseCode = "401", description = "Lista não cadastrado")
+    @GetMapping("/extrato-transacoes")
+    @Operation(summary = "Listar extrato de transações", description = "Retorna a lista completa de transações cadastradas no banco de dados.")
+    @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso!")
+    @ApiResponse(responseCode = "400", description = "Erro de requisição inválida.")
+    @ApiResponse(responseCode = "409", description = "Conflito: Nenhuma transação foi encontrada no banco de dados.")
+    @ApiResponse(responseCode = "500", description = "Erro interno no servidor.")
     public ResponseEntity<List<TransacaoKafkaDTO>> Listartransasoes(){
         return ResponseEntity.ok(service.listartransasoes());
     }
